@@ -70,6 +70,7 @@ $$
 
 ## The tasks
 
+- Start a project to contain your coursework
 - In general: we expect you to use online documentation etc. a lot, just like
 in "real life"
 
@@ -77,3 +78,4 @@ in "real life"
 
 - Constraints
 - Divergences as helpful diagnostics
+- Discuss project proposals
