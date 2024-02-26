@@ -63,6 +63,7 @@ $$
   - [language reference](https://mc-stan.org/docs/reference-manual/index.html) - how the language and algorithms work
   - [function reference](https://mc-stan.org/docs/functions-reference/index.html) - individual functions available in the language
   - [user's guide](https://mc-stan.org/docs/stan-users-guide/index.html) - worked out implementations of many model classes 
+- Stan has very helpful community at https://discourse.mc-stan.org
 - Fundamentally a Stan program computes logarithm of the density (and its gradient, Hessian via autodiff)
   - Why logarithms?
 - Stan is statically typed (and generally quite restrictive). Discuss pros and cons.
