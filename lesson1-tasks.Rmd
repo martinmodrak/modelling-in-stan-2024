@@ -37,6 +37,8 @@ y_i \sim N(\mu, 1) \\
 \mu \sim N(0,1)
 $$
 
+i.e. we are estimating the mean of a normal distribution with known standard deviation and
+a somewhat informative prior on the mean.
 
 _Note: You'll notice many Stan models use statements like `y ~ normal(mu, 1)` instead of `target += normal(y | mu, 1)`. We will discuss this alternative syntax and the differences in next lesson. _
 

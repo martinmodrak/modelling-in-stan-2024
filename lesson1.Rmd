@@ -3,6 +3,11 @@ title: "Lesson 1 - The Basics"
 output: html_document
 ---
 
+```{r include=FALSE}
+# In 2024, the first two sections (Intro to Bayesian stats, intro to computations) took ~45 mins each, the third section (Intro to Stan) took about 30 minutes
+```
+
+
 ## Basics of Bayesian Inference
 
 - Bayes theorem for events
@@ -17,8 +22,10 @@ output: html_document
 
 
 - Bayesian statistics $\neq$ Bayesian epistemology
-  - Catchall hypothesis
-  - Compare to modern falsificationist ideas, notably Mayo
+  - Problems with catchall hypothesis
+  - Problems in computation of Bayes factors
+  - Problems with selective inference
+  - Compare to modern falsificationist ideas, notably Mayo (e.g. [Mayo 2018, SIST](https://www.cambridge.org/core/books/statistical-inference-as-severe-testing/D9DF409EF568090F3F60407FF2B973B2) --- I can lend you a copy, or [Mayo & Spanos 2011](https://doi.org/10.1016/B978-0-444-51862-0.50005-8))
     - Liftoff
 - Modelling notation, e.g.
 
@@ -27,21 +34,22 @@ y \sim N(\mu,\sigma) \\
 \mu \sim N(0, 1) \\
 \sigma \sim HalfN(0, 2)
 $$
-- Modelled vs. unmodelled data
 
+- Modelled vs. unmodelled data
 - Great intro to the underlying philosophical ideas: Chapters 1 - 2 of McElreath's "Statistical Rethinking" - available freely online at https://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf
   - McElreath also has great free course on Bayesian statistics at https://github.com/rmcelreath/stat_rethinking_2024
   
-- Extracting information from probability distributions via expectation values (link Betancourt)
+- Extracting information from probability distributions via expectation values (see [Mike Betancourt's writing](https://betanalpha.github.io/assets/chapters_html/expectation_values.html) for a _very_ detailed coverage)
 
 - MCMC algorithms allow us to sample posterior
   - What is a _chain_
-  - Convergence
+  - Convergence, Rhat, ESS
 - HMC - show example, requires gradient
   - Conceptually two components --- random initial momentum for each trajectory 
     makes the chain explore, preference for high density regions makes the chain spend more time there.
   - Wax poetic how HMC is great
   - HMC will work great, if gradient is useful
+  - HMC has good diagnostic - the "divergence"
   
 
 - What is needed to be proficient at probabilistic programming?
@@ -51,7 +59,10 @@ $$
 
 ## Basics of Stan
 
-- Stan documentation: reference, function reference, user's guide
+- Stan documentation: 
+  - [language reference](https://mc-stan.org/docs/reference-manual/index.html) - how the language and algorithms work
+  - [function reference](https://mc-stan.org/docs/functions-reference/index.html) - individual functions available in the language
+  - [user's guide](https://mc-stan.org/docs/stan-users-guide/index.html) - worked out implementations of many model classes 
 - Fundamentally a Stan program computes logarithm of the density (and its gradient, Hessian via autodiff)
   - Why logarithms?
 - Stan is statically typed (and generally quite restrictive). Discuss pros and cons.
@@ -60,7 +71,7 @@ $$
   - The language
   - The interfaces
   - compiler to C++, compile C++
-- Go through the "hello world" model ()
+- Go through the ["hello world" model](stan/lesson1/initial.stan) for the lesson.
 - Main program blocks
   - `data` (both modelled and non-modelled)
   - `parameters`
@@ -73,6 +84,7 @@ $$
 - Start a project to contain your coursework
 - In general: we expect you to use online documentation etc. a lot, just like
 in "real life"
+- [Task description](lesson1-tasks.html) - separate page
 
 ## Summary after tasks
 

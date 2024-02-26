@@ -286,8 +286,14 @@ $(document).ready(function () {
 <li>Bayesian statistics <span class="math inline">\(\neq\)</span>
 Bayesian epistemology
 <ul>
-<li>Catchall hypothesis</li>
-<li>Compare to modern falsificationist ideas, notably Mayo
+<li>Problems with catchall hypothesis</li>
+<li>Problems in computation of Bayes factors</li>
+<li>Problems with selective inference</li>
+<li>Compare to modern falsificationist ideas, notably Mayo (e.g. <a
+href="https://www.cambridge.org/core/books/statistical-inference-as-severe-testing/D9DF409EF568090F3F60407FF2B973B2">Mayo
+2018, SIST</a> — I can lend you a copy, or <a
+href="https://doi.org/10.1016/B978-0-444-51862-0.50005-8">Mayo &amp;
+Spanos 2011</a>)
 <ul>
 <li>Liftoff</li>
 </ul></li>
@@ -298,8 +304,9 @@ Bayesian epistemology
 y \sim N(\mu,\sigma) \\
 \mu \sim N(0, 1) \\
 \sigma \sim HalfN(0, 2)
-\]</span> - Modelled vs. unmodelled data</p>
+\]</span></p>
 <ul>
+<li><p>Modelled vs. unmodelled data</p></li>
 <li><p>Great intro to the underlying philosophical ideas: Chapters 1 - 2
 of McElreath’s “Statistical Rethinking” - available freely online at <a
 href="https://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf"
@@ -310,11 +317,13 @@ href="https://github.com/rmcelreath/stat_rethinking_2024"
 class="uri">https://github.com/rmcelreath/stat_rethinking_2024</a></li>
 </ul></li>
 <li><p>Extracting information from probability distributions via
-expectation values (link Betancourt)</p></li>
+expectation values (see <a
+href="https://betanalpha.github.io/assets/chapters_html/expectation_values.html">Mike
+Betancourt’s writing</a> for a <em>very</em> detailed coverage)</p></li>
 <li><p>MCMC algorithms allow us to sample posterior</p>
 <ul>
 <li>What is a <em>chain</em></li>
-<li>Convergence</li>
+<li>Convergence, Rhat, ESS</li>
 </ul></li>
 <li><p>HMC - show example, requires gradient</p>
 <ul>
@@ -323,6 +332,7 @@ trajectory makes the chain explore, preference for high density regions
 makes the chain spend more time there.</li>
 <li>Wax poetic how HMC is great</li>
 <li>HMC will work great, if gradient is useful</li>
+<li>HMC has good diagnostic - the “divergence”</li>
 </ul></li>
 <li><p>What is needed to be proficient at probabilistic programming?</p>
 <ul>
@@ -335,7 +345,18 @@ makes the chain spend more time there.</li>
 <div id="basics-of-stan" class="section level2">
 <h2>Basics of Stan</h2>
 <ul>
-<li>Stan documentation: reference, function reference, user’s guide</li>
+<li>Stan documentation:
+<ul>
+<li><a
+href="https://mc-stan.org/docs/reference-manual/index.html">language
+reference</a> - how the language and algorithms work</li>
+<li><a
+href="https://mc-stan.org/docs/functions-reference/index.html">function
+reference</a> - individual functions available in the language</li>
+<li><a
+href="https://mc-stan.org/docs/stan-users-guide/index.html">user’s
+guide</a> - worked out implementations of many model classes</li>
+</ul></li>
 <li>Fundamentally a Stan program computes logarithm of the density (and
 its gradient, Hessian via autodiff)
 <ul>
@@ -350,7 +371,8 @@ pros and cons.</li>
 <li>The interfaces</li>
 <li>compiler to C++, compile C++</li>
 </ul></li>
-<li>Go through the “hello world” model ()</li>
+<li>Go through the <a href="stan/lesson1/initial.stan">“hello world”
+model</a> for the lesson.</li>
 <li>Main program blocks
 <ul>
 <li><code>data</code> (both modelled and non-modelled)</li>
@@ -367,6 +389,8 @@ pros and cons.</li>
 <li>Start a project to contain your coursework</li>
 <li>In general: we expect you to use online documentation etc. a lot,
 just like in “real life”</li>
+<li><a href="lesson1-tasks.html">Task description</a> - separate
+page</li>
 </ul>
 </div>
 <div id="summary-after-tasks" class="section level2">

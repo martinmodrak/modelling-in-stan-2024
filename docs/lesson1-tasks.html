@@ -309,6 +309,8 @@ explicitly with <code>target +=</code>.</p>
 y_i \sim N(\mu, 1) \\
 \mu \sim N(0,1)
 \]</span></p>
+<p>i.e. we are estimating the mean of a normal distribution with known
+standard deviation and a somewhat informative prior on the mean.</p>
 <p><em>Note: You’ll notice many Stan models use statements like
 <code>y ~ normal(mu, 1)</code> instead of
 <code>target += normal(y | mu, 1)</code>. We will discuss this
