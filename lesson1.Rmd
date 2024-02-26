@@ -39,7 +39,7 @@ $$
 - Great intro to the underlying philosophical ideas: Chapters 1 - 2 of McElreath's "Statistical Rethinking" - available freely online at https://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf
   - McElreath also has great free course on Bayesian statistics at https://github.com/rmcelreath/stat_rethinking_2024
   
-- Extracting information from probability distributions via expectation values (see [Mike Betancourt's writing](https://betanalpha.github.io/assets/chapters_html/expectation_values.html) for a _very_ detailed coverage)
+- Extracting information from probability distributions via expectation values (see [Mike Betancourt's writing](https://betanalpha.github.io/assets/case_studies/probabilistic_computation.html) for a _very_ detailed coverage)
 
 - MCMC algorithms allow us to sample posterior
   - What is a _chain_
