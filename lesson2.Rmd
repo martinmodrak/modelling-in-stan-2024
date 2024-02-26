@@ -1,0 +1,7 @@
+---
+title: "Lesson 2"
+output: html_document
+---
+
+- Sampling statements vs. target increments
+  - "Up to a constant" - recall the half-normal prior for sigma.

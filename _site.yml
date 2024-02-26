@@ -1,0 +1,11 @@
+name: "modelling-in-stan-2024"
+navbar:
+  title: "Bayesian probabilistic programming in Stan - 2024 course"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lesson 1 - Tasks"
+      href: lesson1-tasks.html
+output_dir: docs
+include: ["*.html", "*.png"]
+exclude: ["R", "*.R", "*.Rmd", "DESCRIPTION", "NAMESPACE", "renv.lock", "LICENSE", "tests", "solutions", "*.exe"]

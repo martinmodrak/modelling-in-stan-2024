@@ -1,0 +1,79 @@
+---
+title: "Lesson 1 - The Basics"
+output: html_document
+---
+
+## Basics of Bayesian Inference
+
+- Bayes theorem for events
+  - Exercise - which terms should go into nominator/denumerator?
+- Bayes theorem for models
+
+\begin{gather*}
+    \pi_\text{joint}(y, \theta) = \pi_\text{obs}(y | \theta) \pi_\text{prior}(\theta)\\
+    \pi_\text{marg}\left(y \right) = \int_\Theta \mathrm{d} \theta \: \pi_{\text{obs}}(y | \theta) \pi_\text{prior}(\theta)\\
+    \pi_\text{post}(\theta | y) = \frac{\pi_\text{obs}(y | \theta) \pi_\text{prior}(\theta)}{\pi_\text{marg}\left(y \right)}.
+\end{gather*}
+
+
+- Bayesian statistics $\neq$ Bayesian epistemology
+  - Catchall hypothesis
+  - Compare to modern falsificationist ideas, notably Mayo
+    - Liftoff
+- Modelling notation, e.g.
+
+$$
+y \sim N(\mu,\sigma) \\
+\mu \sim N(0, 1) \\
+\sigma \sim HalfN(0, 2)
+$$
+- Modelled vs. unmodelled data
+
+- Great intro to the underlying philosophical ideas: Chapters 1 - 2 of McElreath's "Statistical Rethinking" - available freely online at https://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf
+  - McElreath also has great free course on Bayesian statistics at https://github.com/rmcelreath/stat_rethinking_2024
+  
+- Extracting information from probability distributions via expectation values (link Betancourt)
+
+- MCMC algorithms allow us to sample posterior
+  - What is a _chain_
+  - Convergence
+- HMC - show example, requires gradient
+  - Conceptually two components --- random initial momentum for each trajectory 
+    makes the chain explore, preference for high density regions makes the chain spend more time there.
+  - Wax poetic how HMC is great
+  - HMC will work great, if gradient is useful
+  
+
+- What is needed to be proficient at probabilistic programming?
+  - Mathematical probability/statistics
+  - Numerics
+  - A little software engineering
+
+## Basics of Stan
+
+- Stan documentation: reference, function reference, user's guide
+- Fundamentally a Stan program computes logarithm of the density (and its gradient, Hessian via autodiff)
+  - Why logarithms?
+- Stan is statically typed (and generally quite restrictive). Discuss pros and cons.
+- Stan architecture: 
+  - Math library + autodiff
+  - The language
+  - The interfaces
+  - compiler to C++, compile C++
+- Go through the "hello world" model ()
+- Main program blocks
+  - `data` (both modelled and non-modelled)
+  - `parameters`
+  - `model`
+- `target += ` statements
+- `_lpdf`
+
+## The tasks
+
+- In general: we expect you to use online documentation etc. a lot, just like
+in "real life"
+
+## Summary after tasks
+
+- Constraints
+- Divergences as helpful diagnostics

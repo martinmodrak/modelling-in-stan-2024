@@ -1,0 +1,7 @@
+---
+title: "Bayesian statistical modelling and workflow in Stan"
+output: html_document
+---
+
+
+- Lesson 1: [outline](lesson1.html), [tasks](lesson1-tasks.html)

@@ -1,0 +1,4 @@
+^renv$
+^renv\.lock$
+^sbc_extensions_paper\.Rproj$
+^\.Rproj\.user$

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lesson 1 - Tasks</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Bayesian probabilistic programming in Stan - 2024 course</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="lesson1-tasks.html">Lesson 1 - Tasks</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 1 - Tasks</h1>
+
+</div>
+
+
+<div id="task-1-installing-stan" class="section level2">
+<h2>Task 1: Installing Stan</h2>
+<p>Note: Windows users in both Stan and Python might need RTools
+installed. Martin has a flash drive with RTools installers so that you
+don’t have to wait for the large download.</p>
+<div id="r" class="section level3">
+<h3>R</h3>
+<p>We will use the <code>cmdstanr</code> package, follow <a
+href="https://mc-stan.org/cmdstanr/articles/cmdstanr.html"
+class="uri">https://mc-stan.org/cmdstanr/articles/cmdstanr.html</a></p>
+</div>
+<div id="python" class="section level3">
+<h3>Python</h3>
+<p>We will use the <code>CmdStanPy</code> package, follow <a
+href="https://mc-stan.org/cmdstanpy/installation.html"
+class="uri">https://mc-stan.org/cmdstanpy/installation.html</a></p>
+</div>
+</div>
+<div id="task-2-hello-world-model" class="section level2">
+<h2>Task 2: Hello World model</h2>
+<p>Create a file called <code>initial.stan</code> and paste the
+following simple model.</p>
+<pre><code>data {
+  int&lt;lower=0&gt; N;
+  vector[N] y;
+}
+
+parameters {
+  real mu;
+}
+
+model {
+  // likelihood
+  target += normal_lpdf(y | mu, 1);
+  // prior
+  target += normal_lpdf(mu | 0, 1);
+}</code></pre>
+<p>Note that we express all contributions to the target density
+explicitly with <code>target +=</code>.</p>
+<p>The corresponding statistical model is</p>
+<p><span class="math display">\[
+y_i \sim N(\mu, 1) \\
+\mu \sim N(0,1)
+\]</span></p>
+<p><em>Note: You’ll notice many Stan models use statements like
+<code>y ~ normal(mu, 1)</code> instead of
+<code>target += normal(y | mu, 1)</code>. We will discuss this
+alternative syntax and the differences in next lesson. </em></p>
+<p>Simulate data for the model with 10 data points, using the same
+structure as the model assumes, i.e. draw <span
+class="math inline">\(\mu\)</span> from its prior, then draw <span
+class="math inline">\(y\)</span> (using <code>rnorm</code> in R,
+<code>numpy.random.Generator.normal</code> in Python)</p>
+<p>Compile the model, prepare the data in a format for the model, fit
+the model and display a summary:</p>
+<ul>
+<li>In R: <a
+href="https://mc-stan.org/cmdstanr/articles/cmdstanr.html#compiling-a-model"
+class="uri">https://mc-stan.org/cmdstanr/articles/cmdstanr.html#compiling-a-model</a>
+<ul>
+<li>You may want to use <code>options(mc.cores = 4)</code> to compute
+chains in parallel.</li>
+</ul></li>
+<li>In Python: <a
+href="https://mc-stan.org/cmdstanpy/users-guide/hello_world.html"
+class="uri">https://mc-stan.org/cmdstanpy/users-guide/hello_world.html</a>,
+you can also use the Arviz package - convert the CmdStanPy object to
+<code>InferenceData</code> via <a
+href="https://python.arviz.org/en/latest/api/generated/arviz.from_cmdstanpy.html">arviz.from_cmdstanpy</a>
+and then use <a
+href="https://python.arviz.org/en/latest/api/generated/arviz.summary.html">arviz.summary</a></li>
+</ul>
+<p>Inspect the summary - how big is the uncertainty? Are the “true”
+values we used in simulation recovered?</p>
+</div>
+<div id="task-3-estimate-sigma" class="section level2">
+<h2>Task 3: Estimate <code>sigma</code></h2>
+<p>Add a <code>sigma</code> parameter of type <code>real</code> to model
+the standard deviation, with a half-Normal prior i.e. the new
+mathematical model is:</p>
+<p><span class="math display">\[
+y_i \sim N(\mu, \sigma) \\
+\mu \sim N(0,1) \\
+\sigma \sim HalfN(0, 2)
+\]</span></p>
+<p>Since standard deviation cannot be negative, add a
+<code>&lt;lower=0&gt;</code> constraint to <code>sigma</code>.</p>
+<p>HMC needs the parameter space to be Euclidean (i.e. <span
+class="math inline">\(\mathbb{R}^K\)</span> for some <span
+class="math inline">\(K\)</span>), so when something is constrained,
+there is an implicit transformation, so Stan will use
+<code>log(sigma)</code> internally.</p>
+<p>There is no builtin half-normal distribution in Stan. But it turns
+out, using a normal prior on a variable constrained to be positive is
+the same as using a half-normal distribution. We will go into the
+reasons for this and some nuances next time.</p>
+<p>Generate data according to this model, i.e. first draw <span
+class="math inline">\(\mu\)</span> and <span
+class="math inline">\(\sigma\)</span> from their priors, then draw <span
+class="math inline">\(y\)</span>. You can draw from the half-normal
+distribution simply by taking the absolute value of a draw from the
+normal distribution.</p>
+<p>Explore the summary, do you recover the true parameters?</p>
+</div>
+<div id="task-4-our-first-convergence-problems" class="section level2">
+<h2>Task 4: Our first convergence problems</h2>
+<p>Use the model from the previous task with dataset of size 1. What
+happens?</p>
+<p>Is there a reason the model may not work well with just a single
+datapoint?</p>
+<p>Does the model from Task 2 also have issues with a dataset of size 1?
+Why?</p>
+<p><strong>Bonus:</strong> Try this if you feel it won’t take you too
+much time. Assume that the single data point is <span
+class="math inline">\(y = 1\)</span>, make a contour and/or heatmap plot
+of the posterior density as a function <span
+class="math inline">\(\mu\)</span> and <span
+class="math inline">\(\sigma\)</span> (in R use
+<code>dnorm( log = TRUE)</code>, in Python use
+<code>scipy.stats.norm</code> and the <code>logpdf</code> method).</p>
+<p>Generally, to get a basic understanding of warnings about convergence
+from Stan, the guide at <a href="https://mc-stan.org/misc/warnings"
+class="uri">https://mc-stan.org/misc/warnings</a> is IMHO quite good (I
+wrote most of it :-D).</p>
+</div>
+<div id="task-5-prior-as-data" class="section level2">
+<h2>Task 5: Prior as data</h2>
+<p>Add two new data elements of type <code>real</code> -
+<code>mu_prior_mean</code> and <code>mu_prior_sd</code> to define the
+location and scale of the normal prior for <span
+class="math inline">\(\mu\)</span></p>
+<p>Should those data have some constraints attached? If yes, add them as
+well.</p>
+<p>Test that the model now works with some of the datasets you generated
+previously.</p>
+</div>
+<div id="task-6-prior-influence" class="section level2">
+<h2>Task 6: Prior influence</h2>
+<p>Generate a dataset of size 10 with the prior <span
+class="math inline">\(\mu \sim N(0,1), \sigma \sim HalfN(0, 2)\)</span>.
+Find the least extreme values of <code>mu_prior_mean</code> and
+<code>mu_prior_sd</code> that make the posterior generated by Stan
+exclude the true value of <span class="math inline">\(\mu\)</span> from
+your simulation.</p>
+<p>Try the same task with a dataset of size 3 and a dataset of size
+100.</p>
+</div>
+<div id="task-7-bayesian-t-test" class="section level2">
+<h2>Task 7: Bayesian “t-test”</h2>
+<p>Expand the model so that you now have two sets of data (possibly of
+unequal size), each belonging to a different group and estimate the mean
+in the first group and the difference in means. More specifically, the
+model should look like this:</p>
+<p><span class="math display">\[
+y_A \sim N(\mu, \sigma_A) \\
+y_B \sim N(\mu + \delta, \sigma_B) \\
+\mu \sim N(0, 1)\\
+\delta \sim N\left(0, \frac{1}{2}\right) \\
+\sigma_A, \sigma_B \sim HalfN(0, 1)
+\]</span></p>
+<p>(you can keep the location and scale of the prior as data, but you
+can also hardcode it)</p>
+<p>Repeatedly simulate data according to the model and fit it. How big
+do the groups need to be, so that your posterior interval for <span
+class="math inline">\(\delta\)</span> excludes 0 most of the time?</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
