@@ -1,0 +1,61 @@
+---
+title: "Lesson 1 - solutions"
+output: html_notebook
+---
+
+```{r}
+library(cmdstanr)
+library(bayesplot)
+options(mc.cores = 4)
+```
+
+
+## Task 1
+
+```{r}
+hist(rpois(1000, rlnorm(1000, 0, 10)))
+```
+
+
+```{r}
+N <- 1e5
+sim_data <- rpois(N, rlnorm(N, log(9), log(1.1)))
+hist(sim_data, breaks = 0:30)
+mean(sim_data >= 2 & sim_data <= 15)
+mean(sim_data == 0)
+mean(sim_data > 18)
+```
+
+# Task 4
+
+```{r}
+m_negbin <- cmdstan_model("../stan/lesson2/neg_binom.stan")
+```
+
+```{r}
+set.seed(456825)
+N <- 80
+group <- rep(c("A", "B"), length.out = N)
+type <- rep(c("X", "X", "Y", "Y"), length.out = N)
+y <- rnbinom(N, mu = if_else(type == "X", 5, 20) , size = 2)
+fit <- m_negbin$sample(data = list(N = length(y), y = y))
+
+```
+
+```{r}
+cat()
+```
+
+
+```{r}
+dd <- fit$draws(format = "draws_matrix")
+ypred <- matrix(nrow = nrow(dd), ncol = N)
+for(i in 1:N) {
+  ypred[,i] <- rnbinom(nrow(dd), mu = exp(dd[,"log_mu"]), size = dd[,"phi"])  
+}
+
+ppc_stat(y, ypred, group = type, stat = "sd")
+ppc_stat_grouped(y, ypred, group = type, stat = "mean")
+
+```
+

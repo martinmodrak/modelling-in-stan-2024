@@ -59,6 +59,7 @@ $$
 
 ## Basics of Stan
 
+- A decent tutorial covering similar ground as we did (and some more) is at https://betanalpha.github.io/assets/case_studies/stan_intro.html Note that the example R code there uses the `rstan` package, while we will use the newer `cmdstanr` package.
 - Stan documentation: 
   - [language reference](https://mc-stan.org/docs/reference-manual/index.html) - how the language and algorithms work
   - [function reference](https://mc-stan.org/docs/functions-reference/index.html) - individual functions available in the language

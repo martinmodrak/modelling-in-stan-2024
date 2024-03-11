@@ -11,7 +11,7 @@
 
 
 
-<title>Bayesian statistical modelling and workflow in Stan</title>
+<title>Lesson 2 - Tasks</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -263,18 +263,85 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Bayesian statistical modelling and workflow
-in Stan</h1>
+<h1 class="title toc-ignore">Lesson 2 - Tasks</h1>
 
 </div>
 
 
+<div id="task-1-prior-predictive-check" class="section level2">
+<h2>Task 1: Prior predictive check</h2>
 <ul>
-<li>Lesson 1: <a href="lesson1.html">outline</a>, <a
-href="lesson1-tasks.html">tasks</a></li>
-<li>Lesson 2: <a href="lesson2.html">outline</a>, <a
-href="lesson2-tasks.html">tasks</a></li>
+<li>Let us take a vague <span class="math inline">\(N(0, 10)\)</span>
+prior on the logarithm of the mean. Run a prior predictive check, is
+there anything suspicious?</li>
+<li>Find a prior on the mean of Poisson distribution (or its logarithm -
+you pick) that matches this rough prior knowledge:</li>
+<li>Zeroes are quite unlikely</li>
+<li>Most values should be between 2 and 15</li>
+<li>Values above 18 are quite unlikely</li>
 </ul>
+</div>
+<div id="task-2-fitting-a-poisson" class="section level2">
+<h2>Task 2: Fitting a Poisson</h2>
+<ul>
+<li>Build a model that takes an array of integers</li>
+<li>Accept arguments for prior for the logarithm of the mean as
+data</li>
+<li>Simulate 20 values from a Poisson distribution with known mean. Do
+you recover the values?</li>
+</ul>
+</div>
+<div
+id="task-3-detecting-overdispersion-with-a-posterior-predictive-check"
+class="section level2">
+<h2>Task 3: Detecting overdispersion with a posterior predictive
+check</h2>
+<ul>
+<li><p>Simulate 30 values with neg. binomial with <span
+class="math inline">\(\phi = \frac{1}{2}\)</span> (<code>size</code> in
+R’s <code>rnbinom</code>), fit with the model from Task 2. Do you
+recover the simulated mean of the neg. binomial?</p></li>
+<li><p>Try to detect the model-data mismatch with a posterior predictive
+check.</p></li>
+</ul>
+<p>R: - Use <code>fit$draws(format = "draws_matrix")</code> to get a
+matrix of draws, then use <code>rnbinom</code> to generate the
+predictions - use either <code>bayesplot::ppc_stat</code> with a stat
+measuring the dispersion (e.g. variance, sd, …) or
+<code>bayesplot::ppc_density</code> Python: use either
+<code>arviz.plot_bpv()</code> with <code>kind="t_stat"</code> and a stat
+measuring the dispersion (e.g. variance, sd, …) or
+<code>arviz.plot_ppc</code></p>
+<ul>
+<li><p>What is the smallest number of observations we need to reliably
+detect the problem?</p></li>
+<li><p>Implement a negative binomial model and see how the check behaves
+now.</p>
+<ul>
+<li>Use <a
+href="https://mc-stan.org/docs/functions-reference/unbounded_discrete_distributions.html#nbalt"><code>neg_binomial_2_lpmf</code></a>)</li>
+<li>Put an <code>exponential(1)</code> prior on the overdispersion
+parameter.</li>
+</ul></li>
+</ul>
+</div>
+<div id="task-4-a-bit-more-open-ended-exploration"
+class="section level2">
+<h2>Task 4: A bit more open-ended exploration</h2>
+<p>Given the following data:</p>
+<pre><code>y :  2, 0, 11, 25, 9, 4, 17, 11, 8, 4, 5, 2, 6, 4, 8, 24, 0, 3, 6, 4, 12, 9, 5, 6, 2, 10, 4, 15, 0, 1, 87, 19, 2, 1, 38, 16, 5, 7, 18, 11, 1, 0, 7, 15, 5, 0, 6, 1, 0, 6, 34, 29, 7, 11, 5, 10, 8, 3, 12, 18, 7, 1, 18, 18, 6, 3, 37, 5, 1, 0, 22, 13, 1, 0, 26, 19, 6, 7, 21, 45 
+group :  &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot; 
+type :  &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;X&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Y&quot; </code></pre>
+<p>Try to fit the neg. binomial model from task 3 with a shared mean and
+overdispersion parameter to the <code>y</code> column of the data.</p>
+<p>The model does not represent the data well. Try to figure out what it
+is and fix it!</p>
+<p>Hint: many PPCs can be performed per group, in R this is the
+<code>ppc_xxx_grouped</code> functions.</p>
+</div>
+<div id="task-open-ended-exploration-2" class="section level2">
+<h2>Task: Open-ended exploration 2</h2>
+</div>
 
 
 

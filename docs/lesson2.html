@@ -248,6 +248,9 @@ $(document).ready(function () {
 <li>
   <a href="lesson1-tasks.html">Lesson 1 - Tasks</a>
 </li>
+<li>
+  <a href="lesson2-tasks.html">Lesson 2 - Tasks</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -265,12 +268,135 @@ $(document).ready(function () {
 </div>
 
 
+<pre class="r"><code>library(dplyr)
+library(magrittr)
+library(ggplot2)
+library(tidyr)
+theme_set(theme_minimal())</code></pre>
+<div id="some-technical-stan-stuff" class="section level2">
+<h2>Some technical Stan stuff</h2>
 <ul>
-<li>Sampling statements vs. target increments
+<li>Back to <a
+href="https://martinmodrak.github.io/modelling-in-stan-2024/lesson1-tasks.html#task-4-our-first-convergence-problems">Task
+4</a> from past lesson
 <ul>
-<li>“Up to a constant” - recall the half-normal prior for sigma.</li>
+<li>Here is a plot of how likelihood of the simple normal model with
+unknown mean and standard deviation changes as we add data points. Note
+that for N=1 the plot is truncated as the density grows without bounds
+as <span class="math inline">\(\log \sigma \to \infty\)</span> and <span
+class="math inline">\(\mu \to y_1\)</span>.</li>
+<li>The plots don’t include prior, just the likelihood. Prior improves
+things a bit, but not enough (as witnessed by the warnings from
+Stan)</li>
+<li>Note that the likelihood is still visibly skewed (and thus
+non-normal) even for quite large datasets.</li>
 </ul></li>
 </ul>
+<pre class="r"><code>plot_densities &lt;- function(n_data_vals, mu_range = c(-3,3), log_sigma_range = c(-2,2)) {
+  set.seed(566522)
+  y = c(-0.6906332,  1.2873201, 2.0089285, 0.1347772, -0.8905993, -0.8171846, rnorm(max(1, max(n_data_vals))))
+  underdetermined_theory &lt;- crossing(mu = seq(mu_range[1], mu_range[2], length.out = 200), log_sigma = seq(log_sigma_range[1], log_sigma_range[2], length.out = 200),
+           data.frame(y_id = 1:length(y), y = y), n_data = n_data_vals
+           ) %&gt;%
+    filter(y_id &lt;= n_data) %&gt;%
+    mutate(log_density_point = dnorm(y, mu, exp(log_sigma), log = TRUE)) %&gt;%
+    group_by(mu, log_sigma, n_data) %&gt;%
+    summarise(log_density = sum(log_density_point), .groups = &quot;drop&quot;) %&gt;%
+    group_by(n_data) %&gt;%
+    mutate(rel_density = exp(log_density - max(log_density))) %&gt;%
+    ggplot(aes(x = mu, y = log_sigma, z = rel_density)) + geom_contour() + #geom_raster() + 
+    facet_wrap(~n_data, nrow = 1, labeller = label_bquote(cols = paste(N, &quot; = &quot;, .(n_data)) )) + scale_y_continuous(&quot;log(sigma)&quot;)
+  
+  underdetermined_theory
+}
+
+plot_densities(c(1,2,8))</code></pre>
+<p><img src="lesson2_files/figure-html/density-underdetermined-1.png" width="672" /></p>
+<pre class="r"><code>plot_densities(c(15, 30, 50), mu_range = c(-1,1), log_sigma_range = c(-0.5,1))</code></pre>
+<p><img src="lesson2_files/figure-html/density-underdetermined-2.png" width="672" /></p>
+<ul>
+<li>Explain divergences - we will mostly follow <a
+href="https://mc-stan.org/misc/warnings"
+class="uri">https://mc-stan.org/misc/warnings</a>
+<ul>
+<li>Divergences are your friend!</li>
+</ul></li>
+<li>Sampling statements vs. target increments (<a
+href="https://mc-stan.org/docs/reference-manual/statements.html#sampling-statements.section"
+class="uri">https://mc-stan.org/docs/reference-manual/statements.html#sampling-statements.section</a>)
+<ul>
+<li>“Up to a constant” - recall the half-normal prior for sigma.</li>
+<li><code>xx_lupdf</code>, <code>xx_lupmf</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="using-integers-in-stan-programs" class="section level2">
+<h2>Using integers in Stan programs</h2>
+<ul>
+<li>Ints can only ever be data</li>
+<li>Arrays are declared as <code>array[size] base_type;</code> (<a
+href="https://mc-stan.org/docs/reference-manual/types.html#array-data-types.section">arrays
+in Stan manual</a>)
+<ul>
+<li>i.e. array of <code>N</code> ints is <code>array[N] int;</code></li>
+<li>You can have arrays of anything (i.e. vectors, matrices, bounded
+integers, …)</li>
+</ul></li>
+<li>Poisson and negative binomial distibution
+<ul>
+<li>Modelling log mean</li>
+<li>The mean - overdispersion parametrization of negative binomial
+<ul>
+<li>In R, you can use
+<code>rnbinom(mu = mean, size = overdispersion)</code></li>
+<li>In Python, it seems you need to convert manually, see <a
+href="https://stackoverflow.com/a/62460072/802009"
+class="uri">https://stackoverflow.com/a/62460072/802009</a> for
+Python</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="workflow" class="section level2">
+<h2>Workflow</h2>
+<ul>
+<li>We will follow the Bayesian workflow from <a
+href="https://arxiv.org/abs/2011.01808"
+class="uri">https://arxiv.org/abs/2011.01808</a> - we’ll start with the
+most useful and simple steps in this lesson.</li>
+<li>Build slowly and test as many assumptions of the model as possible
+<ul>
+<li>The assumptions will usually be wrong. But are they importantly
+wrong?</li>
+</ul></li>
+<li>The goal is to be able to confidently build complex models</li>
+<li>Steps of modelling, that need to be checked:
+<ul>
+<li>Prior, fit to data (likelihood), computation</li>
+<li>Checking parameter recovery from simulations is a simple computation
+check</li>
+</ul></li>
+<li>Priors can (and should) be tested: <em>prior predictive check</em>
+<ul>
+<li>Simulate data from the prior, check that the data match domain
+expertise</li>
+<li>If they don’t the prior is bad
+<ul>
+<li>It may however be unclear how to get a better prior…</li>
+</ul></li>
+</ul></li>
+<li>Posterior predictive checks:
+<ul>
+<li>Compute something about a dataset (e.g. variance for each group of
+observations)</li>
+<li>Copmute the same something about each posterior draw</li>
+<li>If the values for the actual dataset lie in the extreme of the
+posterior distribution, something is wrong</li>
+</ul></li>
+<li>Simple model first. Individual components first separately, then
+joined.</li>
+</ul>
+</div>
 
 
 

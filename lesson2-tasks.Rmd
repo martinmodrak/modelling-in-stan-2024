@@ -1,0 +1,59 @@
+---
+title: "Lesson 2 - Tasks"
+output: html_document
+---
+
+
+## Task 1: Prior predictive check
+
+- Let us take a vague $N(0, 10)$ prior on the logarithm of the mean. Run a prior predictive check, is there anything suspicious?
+- Find a prior on the mean of Poisson distribution (or its logarithm - you pick) that matches this rough prior
+knowledge: 
+ - Zeroes are quite unlikely
+ - Most values should be between 2 and 15
+ - Values above 18 are quite unlikely 
+ 
+
+
+## Task 2: Fitting a Poisson
+
+- Build a model that takes an array of integers
+- Accept arguments for prior for the logarithm of the mean as data
+- Simulate 20 values from a Poisson distribution with known mean. Do you recover the values?
+
+## Task 3: Detecting overdispersion with a posterior predictive check
+
+- Simulate 30 values with neg. binomial with $\phi = \frac{1}{2}$ (`size` in R's `rnbinom`), fit with the model from Task 2. Do you recover the simulated mean of the neg. binomial?
+
+- Try to detect the model-data mismatch with a posterior predictive check.
+  
+
+R:
+  - Use `fit$draws(format = "draws_matrix")` to get a matrix of draws, then use `rnbinom` to generate the predictions
+  - use either `bayesplot::ppc_stat` with a stat measuring the dispersion (e.g. variance, sd, ...) or `bayesplot::ppc_density`
+Python: use either  `arviz.plot_bpv()` with `kind="t_stat"`  and a stat measuring the dispersion (e.g. variance, sd, ...) or `arviz.plot_ppc`
+
+- What is the smallest number of observations we need to reliably detect the problem?
+
+- Implement a negative binomial model and see how the check behaves now. 
+  - Use [`neg_binomial_2_lpmf`](https://mc-stan.org/docs/functions-reference/unbounded_discrete_distributions.html#nbalt))
+  - Put an `exponential(1)` prior on the overdispersion parameter.
+
+## Task 4: A bit more open-ended exploration
+
+Given the following data:
+
+```
+y :  2, 0, 11, 25, 9, 4, 17, 11, 8, 4, 5, 2, 6, 4, 8, 24, 0, 3, 6, 4, 12, 9, 5, 6, 2, 10, 4, 15, 0, 1, 87, 19, 2, 1, 38, 16, 5, 7, 18, 11, 1, 0, 7, 15, 5, 0, 6, 1, 0, 6, 34, 29, 7, 11, 5, 10, 8, 3, 12, 18, 7, 1, 18, 18, 6, 3, 37, 5, 1, 0, 22, 13, 1, 0, 26, 19, 6, 7, 21, 45 
+group :  "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B", "A", "B" 
+type :  "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y", "X", "X", "Y", "Y" 
+```
+
+Try to fit the neg. binomial model from task 3 with a shared mean and overdispersion parameter to the `y` column of the data.
+
+The model does not represent the data well. Try to figure out what it is and fix it!
+
+Hint: many PPCs can be performed per group, in R this is the `ppc_xxx_grouped` functions.
+
+
+## Task: Open-ended exploration 2

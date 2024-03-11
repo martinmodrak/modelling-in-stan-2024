@@ -5,6 +5,7 @@ output: html_notebook
 
 ```{r}
 library(cmdstanr)
+options(mc.cores = 4)
 ```
 
 
@@ -36,7 +37,7 @@ mu <- rnorm(1, mean = 0, sd = 1)
 y <- rnorm(N, mean = mu, sd = 1)
 
 
-res <- m_with_sigma_prior$sample(list(N = N, y = y, sigma_prior_sd = 2, mu_prior_sd = 1))
+res <- m_with_sigma_prior$sample(list(N = N, y = y, mu_prior_mean = 0, sigma_prior_sd = 2, mu_prior_sd = 1))
 res$summary()
 ```
 
