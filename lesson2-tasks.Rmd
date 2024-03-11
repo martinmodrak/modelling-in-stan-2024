@@ -30,7 +30,7 @@ knowledge:
 
 R:
   - Use `fit$draws(format = "draws_matrix")` to get a matrix of draws, then use `rnbinom` to generate the predictions
-  - use either `bayesplot::ppc_stat` with a stat measuring the dispersion (e.g. variance, sd, ...) or `bayesplot::ppc_density`
+  - use either `bayesplot::ppc_stat` with a stat measuring the dispersion (e.g. variance, sd, ...) or `bayesplot::ppc_dens_overlay`
 Python: use either  `arviz.plot_bpv()` with `kind="t_stat"`  and a stat measuring the dispersion (e.g. variance, sd, ...) or `arviz.plot_ppc`
 
 - What is the smallest number of observations we need to reliably detect the problem?
@@ -57,3 +57,14 @@ Hint: many PPCs can be performed per group, in R this is the `ppc_xxx_grouped` f
 
 
 ## Task: Open-ended exploration 2
+
+Given the following data:
+
+```
+y :  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 
+group :  "B", "C", "D", "B", "C", "B", "D", "C", "A", "D", "C", "C", "C", "D", "C", "C", "B", "B", "D", "C", "D", "C", "C", "A", "B", "D", "C", "D", "D", "D", "C", "D", "A", "A", "C", "D", "D", "C", "C", "B", "B", "C", "D", "D", "A", "D", "A", "B", "C", "A" 
+```
+
+Once again use the model from Task 3. Use posterior predictive check to determine what is wrong. 
+
+Can you fix it?

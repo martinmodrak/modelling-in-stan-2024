@@ -308,7 +308,7 @@ check.</p></li>
 matrix of draws, then use <code>rnbinom</code> to generate the
 predictions - use either <code>bayesplot::ppc_stat</code> with a stat
 measuring the dispersion (e.g. variance, sd, …) or
-<code>bayesplot::ppc_density</code> Python: use either
+<code>bayesplot::ppc_dens_overlay</code> Python: use either
 <code>arviz.plot_bpv()</code> with <code>kind="t_stat"</code> and a stat
 measuring the dispersion (e.g. variance, sd, …) or
 <code>arviz.plot_ppc</code></p>
@@ -341,6 +341,12 @@ is and fix it!</p>
 </div>
 <div id="task-open-ended-exploration-2" class="section level2">
 <h2>Task: Open-ended exploration 2</h2>
+<p>Given the following data:</p>
+<pre><code>y :  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 
+group :  &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;B&quot;, &quot;C&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;A&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;C&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;D&quot;, &quot;D&quot;, &quot;D&quot;, &quot;C&quot;, &quot;D&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;D&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;D&quot;, &quot;A&quot;, &quot;D&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot; </code></pre>
+<p>Once again use the model from Task 3. Use posterior predictive check
+to determine what is wrong.</p>
+<p>Can you fix it?</p>
 </div>
 
 
