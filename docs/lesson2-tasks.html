@@ -307,13 +307,8 @@ recover the simulated mean of the neg. binomial?</p></li>
 check.</p></li>
 </ul>
 <p>R: - Use <code>fit$draws(format = "draws_matrix")</code> to get a
-matrix of draws, then use <code>rnbinom</code> to generate the
-predictions - use either <code>bayesplot::ppc_stat</code> with a stat
-measuring the dispersion (e.g. variance, sd, …) or
-<code>bayesplot::ppc_dens_overlay</code> Python: use either
-<code>arviz.plot_bpv()</code> with <code>kind="t_stat"</code> and a stat
-measuring the dispersion (e.g. variance, sd, …) or
-<code>arviz.plot_ppc</code></p>
+matrix of draws, then use
+<code>rpois`` to generate the predictions as the Stan model assumes   - use either</code>bayesplot::ppc_stat<code>with a stat measuring the dispersion (e.g. variance, sd, ...) or</code>bayesplot::ppc_dens_overlay<code>Python: use either</code>arviz.plot_bpv()<code>with</code>kind=“t_stat”<code>and a stat measuring the dispersion (e.g. variance, sd, ...) or</code>arviz.plot_ppc`</p>
 <ul>
 <li><p>What is the smallest number of observations we need to reliably
 detect the problem?</p></li>
