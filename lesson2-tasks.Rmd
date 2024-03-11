@@ -6,12 +6,12 @@ output: html_document
 
 ## Task 1: Prior predictive check
 
-- Let us take a vague $N(0, 10)$ prior on the logarithm of the mean. Run a prior predictive check, is there anything suspicious?
+- Let us take a vague $N(0, 10)$ prior on the logarithm of the mean of a Poisson distribution. Run a prior predictive check, is there anything suspicious?
 - Find a prior on the mean of Poisson distribution (or its logarithm - you pick) that matches this rough prior
 knowledge: 
- - Zeroes are quite unlikely
- - Most values should be between 2 and 15
- - Values above 18 are quite unlikely 
+   - Zeroes are quite unlikely
+   - Most values should be between 2 and 15
+   - Values above 18 are quite unlikely 
  
 
 
@@ -56,7 +56,7 @@ The model does not represent the data well. Try to figure out what it is and fix
 Hint: many PPCs can be performed per group, in R this is the `ppc_xxx_grouped` functions.
 
 
-## Task: Open-ended exploration 2
+## Task 5: Open-ended exploration 2
 
 Given the following data:
 

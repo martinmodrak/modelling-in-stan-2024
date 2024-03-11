@@ -272,13 +272,15 @@ $(document).ready(function () {
 <h2>Task 1: Prior predictive check</h2>
 <ul>
 <li>Let us take a vague <span class="math inline">\(N(0, 10)\)</span>
-prior on the logarithm of the mean. Run a prior predictive check, is
-there anything suspicious?</li>
+prior on the logarithm of the mean of a Poisson distribution. Run a
+prior predictive check, is there anything suspicious?</li>
 <li>Find a prior on the mean of Poisson distribution (or its logarithm -
-you pick) that matches this rough prior knowledge:</li>
+you pick) that matches this rough prior knowledge:
+<ul>
 <li>Zeroes are quite unlikely</li>
 <li>Most values should be between 2 and 15</li>
 <li>Values above 18 are quite unlikely</li>
+</ul></li>
 </ul>
 </div>
 <div id="task-2-fitting-a-poisson" class="section level2">
@@ -339,8 +341,8 @@ is and fix it!</p>
 <p>Hint: many PPCs can be performed per group, in R this is the
 <code>ppc_xxx_grouped</code> functions.</p>
 </div>
-<div id="task-open-ended-exploration-2" class="section level2">
-<h2>Task: Open-ended exploration 2</h2>
+<div id="task-5-open-ended-exploration-2" class="section level2">
+<h2>Task 5: Open-ended exploration 2</h2>
 <p>Given the following data:</p>
 <pre><code>y :  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1 
 group :  &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;B&quot;, &quot;C&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;A&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;C&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot;, &quot;D&quot;, &quot;D&quot;, &quot;D&quot;, &quot;C&quot;, &quot;D&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;D&quot;, &quot;D&quot;, &quot;C&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;D&quot;, &quot;A&quot;, &quot;D&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot; </code></pre>
