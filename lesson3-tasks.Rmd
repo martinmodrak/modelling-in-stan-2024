@@ -41,7 +41,8 @@ data {
 
 ## Task 3: Add a continuous predictor
 
-Add a new continuous predictor (a vector of real numbers) for each data point and add an extra coefficient to model its influence.
+Add a new continuous predictor (a vector of real numbers) for each data point and add an extra coefficient to model its influence. 
+To simplify, you may (or may not) assume that the standard deviation of the outcome is the same for all observations (i.e. no need to keep separate $\sigma_A, \sigma_B$)
 
 Simulate data and check parameter recovery.
 
@@ -76,7 +77,7 @@ Your Stan code should not need to change.
 
 Simulate data, fit, check parameter recovery.
 
-## Task 6: Negative binomial regression
+## Task 7: Negative binomial regression
 
 Starting with the previous model, create a negative binomial regression model with a log link.
 

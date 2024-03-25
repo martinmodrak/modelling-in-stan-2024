@@ -311,7 +311,10 @@ something like:</p>
 <div id="task-3-add-a-continuous-predictor" class="section level2">
 <h2>Task 3: Add a continuous predictor</h2>
 <p>Add a new continuous predictor (a vector of real numbers) for each
-data point and add an extra coefficient to model its influence.</p>
+data point and add an extra coefficient to model its influence. To
+simplify, you may (or may not) assume that the standard deviation of the
+outcome is the same for all observations (i.e. no need to keep separate
+<span class="math inline">\(\sigma_A, \sigma_B\)</span>)</p>
 <p>Simulate data and check parameter recovery.</p>
 </div>
 <div id="task-4-matrix-multiplication" class="section level2">
@@ -345,8 +348,8 @@ models, it is a great resource!</p>
 categorical predictor. Your Stan code should not need to change.</p>
 <p>Simulate data, fit, check parameter recovery.</p>
 </div>
-<div id="task-6-negative-binomial-regression-1" class="section level2">
-<h2>Task 6: Negative binomial regression</h2>
+<div id="task-7-negative-binomial-regression" class="section level2">
+<h2>Task 7: Negative binomial regression</h2>
 <p>Starting with the previous model, create a negative binomial
 regression model with a log link.</p>
 <p>Simulate data, fit, check parameter recovery (you can use a simpler
