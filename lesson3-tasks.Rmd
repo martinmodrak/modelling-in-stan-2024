@@ -1,0 +1,84 @@
+---
+title: "Lesson 3 - Tasks"
+output: html_document
+---
+
+
+
+## Task 1: Bayesian "t-test"
+
+__This is a copy of Task 7 from Lesson 1__
+
+Expand the model from lesson 1 so that you now have two sets of data (possibly of unequal size), each belonging to a different group and
+estimate the mean in the first group and the difference in means. More specifically, the model should look like this:
+
+$$
+y_A \sim N(\mu, \sigma_A) \\
+y_B \sim N(\mu + \delta, \sigma_B) \\
+\mu \sim N(0, 1)\\
+\delta \sim N\left(0, \frac{1}{2}\right) \\
+\sigma_A, \sigma_B \sim HalfN(0, 1)
+$$
+
+(you can keep the location and scale of the prior as data, but you can also hardcode it)
+
+Repeatedly simulate data according to the model and fit it.
+
+How big do the groups need to be, so that your posterior interval for $\delta$ excludes 0 most of the time? No need for a very precise answer, just a ballpark estimate, so running at most 5 simulations per sample size setting should be enough to get a good grasp.
+
+
+## Task 2: Convert to "long format"
+
+If you haven't already, adapt the model from the previous task so that the observed $y$ are all stored in a single vector of length $N$ and another vector of length $N$ encodes group membership. I.e. your `data` section should look something like:
+
+```
+data {
+   int<lower=0> N;
+   vector[N] y;
+   array[N] int<lower=0,upper=1> isB;
+}
+```
+
+## Task 3: Add a continuous predictor
+
+Add a new continuous predictor (a vector of real numbers) for each data point and add an extra coefficient to model its influence.
+
+Simulate data and check parameter recovery.
+
+## Task 4: Matrix multiplication
+
+Make a copy of the model and convert it to matrix multiplication format.
+Make the number of columns in the design matrix variable. I.e. your `data` section should look something like:
+
+```
+data {
+  int<lower=0> N;   // number of data items
+  int<lower=0> K;   // number of predictors
+  matrix[N, K] x;   // predictor matrix
+  vector[N] y;      // outcome vector
+}
+```
+
+
+Test that with the same data, you get the same results as in the previous version (since Hamiltonian Monte Carlo is stochastic you won't get exactly the same results, but they should be numerically very close)
+
+## Task 5: Compare to user's guide
+
+Compare what you've built with the example linear regression models in Stan's User's guide:
+https://mc-stan.org/docs/stan-users-guide/regression.html#linear-regression
+
+Don't be afraid to use the User's guide as a starting point for your models, it is a great resource!
+
+## Task 6: Negative binomial regression
+
+Use dummy coding to extend the model to have 3 groups in the categorical predictor. 
+Your Stan code should not need to change.
+
+Simulate data, fit, check parameter recovery.
+
+## Task 6: Negative binomial regression
+
+Starting with the previous model, create a negative binomial regression model with a log link.
+
+Simulate data, fit, check parameter recovery (you can use a simpler set of predictors if you prefer).
+

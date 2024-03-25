@@ -1,0 +1,42 @@
+---
+title: "Lesson 2"
+output: html_document
+---
+
+```{r setup}
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+library(tidyr)
+theme_set(theme_minimal())
+```
+
+
+
+## First, let's slow down a bit
+
+Try to complete [Task 3 and 4](lesson3-tasks.html#task-3-detecting-overdispersion-with-a-posterior-predictive-check) from Lesson 2 (and possibly others from the previous lessons)
+
+Pick projects!
+
+## Note on models
+
+- Reuse methodology slides: https://docs.google.com/presentation/d/1jkcKfTOupedZRoJZ9qSuGVDBjlzZFt6vOyEyN0pwduY/edit?usp=sharing
+
+## Linear regression
+
+- The most ubiquitous type of model --- see e.g. https://lindeloev.github.io/tests-as-linear/
+- Taylor series
+- Intercept, coefficients
+- Dummy coding
+  - There are other ways to code (e.g. effect coding)
+  - `model.matrix` in `R`
+- Linear predictors and matrix multiplication
+  - Intercept in the matrix
+- Least squares and normal distribution
+- Generalized linear models (GLM)
+  - Link function, inverse link function
+  - log for positive, logit for [0, 1].
+- Posterior predictive checks as a method to determine which predictors to add
+
+Now, let's do some tasks. Note that they match workflow (simple stuff first, ...)

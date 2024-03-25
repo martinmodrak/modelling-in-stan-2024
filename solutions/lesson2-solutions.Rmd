@@ -43,7 +43,9 @@ fit <- m_negbin$sample(data = list(N = length(y), y = y))
 ```
 
 ```{r}
-cat()
+cat("y : ", paste0(y, collapse = ", "), "\n")
+cat("group : ", paste0('"', group,'"',  collapse = ", "), "\n")
+cat("type : ", paste0('"', type,'"',  collapse = ", "), "\n")
 ```
 
 
@@ -57,5 +59,33 @@ for(i in 1:N) {
 ppc_stat(y, ypred, group = type, stat = "sd")
 ppc_stat_grouped(y, ypred, group = type, stat = "mean")
 
+```
+
+
+
+# Task 5
+
+```{r}
+N <- 50
+prob <- 0.9
+y <- rbinom(N, size = 1, prob = prob)
+
+fit_bern <- m_negbin$sample(data = list(N = N, y  = y))
+```
+
+```{r}
+dd <- fit_bern$draws(format = "draws_matrix")
+ypred <- matrix(nrow = nrow(dd), ncol = N)
+for(i in 1:N) {
+  ypred[,i] <- rnbinom(nrow(dd), mu = exp(dd[,"log_mu"]), size = dd[,"phi"])  
+}
+
+
+ppc_dens_overlay(y, ypred[1:50,])
+```
+
+```{r}
+cat("y : ", paste0(y, collapse = ", "), "\n")
+cat("group : ", paste0('"', sample(LETTERS[1:4], size = N, replace = TRUE),'"',  collapse = ", "), "\n")
 ```
 
