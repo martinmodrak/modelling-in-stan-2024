@@ -29,7 +29,7 @@ How big do the groups need to be, so that your posterior interval for $\delta$ e
 
 ## Task 2: Convert to "long format"
 
-If you haven't already, adapt the model from the previous task so that the observed $y$ are all stored in a single vector of length $N$ and another vector of length $N$ encodes group membership. I.e. your `data` section should look something like:
+Adapt the model from the previous task so that a) the standard deviation ($\sigma$) is the same for all data and b) the observed $y$ are all stored in a single vector of length $N$ and another vector of length $N$ encodes group membership. I.e. your `data` section should look something like:
 
 ```
 data {
@@ -39,10 +39,23 @@ data {
 }
 ```
 
+Hint: after converting `isB` into a `vector` (with `to_vector`) you can obtain 
+a vector of length `N` of means for all observations by addition and multiplication.
+
+You can then directly pass the vector to `normal_lpdf`, i.e. have 
+
+```
+target += normal_lpdf(y | __COMPUTATION_HERE__, sigma);
+```
+
+If stuck, see https://mc-stan.org/docs/stan-users-guide/regression.html
+
+For extra credit, you may try to figure out how to keep the distinct standard deviations following a similar computation.
+
+
 ## Task 3: Add a continuous predictor
 
-Add a new continuous predictor (a vector of real numbers) for each data point and add an extra coefficient to model its influence. 
-To simplify, you may (or may not) assume that the standard deviation of the outcome is the same for all observations (i.e. no need to keep separate $\sigma_A, \sigma_B$)
+Add a new continuous predictor (a vector of real numbers) for each data point and add an extra coefficient (a new variable in the `parameters` block) to model its influence. 
 
 Simulate data and check parameter recovery.
 
@@ -68,11 +81,11 @@ Test that with the same data, you get the same results as in the previous versio
 Compare what you've built with the example linear regression models in Stan's User's guide:
 https://mc-stan.org/docs/stan-users-guide/regression.html#linear-regression
 
-Don't be afraid to use the User's guide as a starting point for your models, it is a great resource!
+Generally, don't be afraid to use the User's guide as a starting point for your models, it is a great resource!
 
-## Task 6: Negative binomial regression
+## Task 6: Dummy coding
 
-Use dummy coding to extend the model to have 3 groups in the categorical predictor. 
+Use [dummy coding](https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-dummy-coding/) to extend the model to have 3 groups instead of 2 in the categorical predictor. 
 Your Stan code should not need to change.
 
 Simulate data, fit, check parameter recovery.

@@ -296,25 +296,36 @@ good grasp.</p>
 </div>
 <div id="task-2-convert-to-long-format" class="section level2">
 <h2>Task 2: Convert to “long format”</h2>
-<p>If you haven’t already, adapt the model from the previous task so
-that the observed <span class="math inline">\(y\)</span> are all stored
-in a single vector of length <span class="math inline">\(N\)</span> and
-another vector of length <span class="math inline">\(N\)</span> encodes
-group membership. I.e. your <code>data</code> section should look
-something like:</p>
+<p>Adapt the model from the previous task so that a) the standard
+deviation (<span class="math inline">\(\sigma\)</span>) is the same for
+all data and b) the observed <span class="math inline">\(y\)</span> are
+all stored in a single vector of length <span
+class="math inline">\(N\)</span> and another vector of length <span
+class="math inline">\(N\)</span> encodes group membership. I.e. your
+<code>data</code> section should look something like:</p>
 <pre><code>data {
    int&lt;lower=0&gt; N;
    vector[N] y;
    array[N] int&lt;lower=0,upper=1&gt; isB;
 }</code></pre>
+<p>Hint: after converting <code>isB</code> into a <code>vector</code>
+(with <code>to_vector</code>) you can obtain a vector of length
+<code>N</code> of means for all observations by addition and
+multiplication.</p>
+<p>You can then directly pass the vector to <code>normal_lpdf</code>,
+i.e. have</p>
+<pre><code>target += normal_lpdf(y | __COMPUTATION_HERE__, sigma);</code></pre>
+<p>If stuck, see <a
+href="https://mc-stan.org/docs/stan-users-guide/regression.html"
+class="uri">https://mc-stan.org/docs/stan-users-guide/regression.html</a></p>
+<p>For extra credit, you may try to figure out how to keep the distinct
+standard deviations following a similar computation.</p>
 </div>
 <div id="task-3-add-a-continuous-predictor" class="section level2">
 <h2>Task 3: Add a continuous predictor</h2>
 <p>Add a new continuous predictor (a vector of real numbers) for each
-data point and add an extra coefficient to model its influence. To
-simplify, you may (or may not) assume that the standard deviation of the
-outcome is the same for all observations (i.e. no need to keep separate
-<span class="math inline">\(\sigma_A, \sigma_B\)</span>)</p>
+data point and add an extra coefficient (a new variable in the
+<code>parameters</code> block) to model its influence.</p>
 <p>Simulate data and check parameter recovery.</p>
 </div>
 <div id="task-4-matrix-multiplication" class="section level2">
@@ -339,12 +350,14 @@ close)</p>
 in Stan’s User’s guide: <a
 href="https://mc-stan.org/docs/stan-users-guide/regression.html#linear-regression"
 class="uri">https://mc-stan.org/docs/stan-users-guide/regression.html#linear-regression</a></p>
-<p>Don’t be afraid to use the User’s guide as a starting point for your
-models, it is a great resource!</p>
+<p>Generally, don’t be afraid to use the User’s guide as a starting
+point for your models, it is a great resource!</p>
 </div>
-<div id="task-6-negative-binomial-regression" class="section level2">
-<h2>Task 6: Negative binomial regression</h2>
-<p>Use dummy coding to extend the model to have 3 groups in the
+<div id="task-6-dummy-coding" class="section level2">
+<h2>Task 6: Dummy coding</h2>
+<p>Use <a
+href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-dummy-coding/">dummy
+coding</a> to extend the model to have 3 groups instead of 2 in the
 categorical predictor. Your Stan code should not need to change.</p>
 <p>Simulate data, fit, check parameter recovery.</p>
 </div>

@@ -300,20 +300,36 @@ href="https://lindeloev.github.io/tests-as-linear/"
 class="uri">https://lindeloev.github.io/tests-as-linear/</a></li>
 <li>Taylor series</li>
 <li>Intercept, coefficients</li>
-<li>Dummy coding
+<li><a
+href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-dummy-coding/">Dummy
+coding</a>
 <ul>
-<li>There are other ways to code (e.g. effect coding)</li>
-<li><code>model.matrix</code> in <code>R</code></li>
+<li>There are other ways to code (e.g. <a
+href="https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-effect-coding/">effect
+coding</a>)</li>
+<li><code>model.matrix</code> in <code>R</code> does the coding for
+you</li>
 </ul></li>
 <li>Linear predictors and matrix multiplication
 <ul>
 <li>Intercept in the matrix</li>
 </ul></li>
-<li>Least squares and normal distribution</li>
-<li>Generalized linear models (GLM)
+<li><a href="https://en.wikipedia.org/wiki/Least_squares">Least
+squares</a> and its relatio to normal distribution
+<ul>
+<li>Maximum likelihood estimator is equivalent to least-squares.</li>
+</ul></li>
+<li><a
+href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized
+linear models</a> (GLM)
 <ul>
 <li>Link function, inverse link function</li>
-<li>log for positive, logit for [0, 1].</li>
+<li>Most common link functions:
+<ul>
+<li>log for positive outcomes (i.e. exponentiate the predictors),</li>
+<li>logit (i.e. apply inverse logit to the predictor) for outcomes in
+[0, 1] - most notably for probabilities in logistic regression.</li>
+</ul></li>
 </ul></li>
 <li>Posterior predictive checks as a method to determine which
 predictors to add</li>

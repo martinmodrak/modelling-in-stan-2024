@@ -3,6 +3,7 @@ title: "Bayesian statistical modelling and workflow in Stan"
 output: html_document
 ---
 
+Last updated: `r  Sys.time()`.
 
 - Lesson 1: [outline](lesson1.html), [tasks](lesson1-tasks.html)
 - Lesson 2: [outline](lesson2.html), [tasks](lesson2-tasks.html)

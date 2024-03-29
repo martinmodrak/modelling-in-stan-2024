@@ -28,15 +28,18 @@ Pick projects!
 - The most ubiquitous type of model --- see e.g. https://lindeloev.github.io/tests-as-linear/
 - Taylor series
 - Intercept, coefficients
-- Dummy coding
-  - There are other ways to code (e.g. effect coding)
-  - `model.matrix` in `R`
+- [Dummy coding](https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-dummy-coding/)
+  - There are other ways to code (e.g. [effect coding](https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-effect-coding/))
+  - `model.matrix` in `R` does the coding for you
 - Linear predictors and matrix multiplication
   - Intercept in the matrix
-- Least squares and normal distribution
-- Generalized linear models (GLM)
+- [Least squares](https://en.wikipedia.org/wiki/Least_squares) and  its relatio to normal distribution
+  - Maximum likelihood estimator is equivalent to least-squares.
+- [Generalized linear models](https://en.wikipedia.org/wiki/Generalized_linear_model) (GLM)
   - Link function, inverse link function
-  - log for positive, logit for [0, 1].
+  - Most common link functions:
+    - log for positive outcomes (i.e. exponentiate the predictors), 
+    - logit (i.e. apply inverse logit to the predictor) for outcomes in [0, 1] - most notably for probabilities in logistic regression.
 - Posterior predictive checks as a method to determine which predictors to add
 
 Now, let's do some tasks. Note that they match workflow (simple stuff first, ...)
