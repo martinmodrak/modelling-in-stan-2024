@@ -1,0 +1,13 @@
+---
+title: "Lesson 4"
+output: html_document
+---
+
+
+
+- Random effects
+  - Population of effects
+  - Shrinkage
+- Non-centered parametrization
+- `transformed parameters` block
+

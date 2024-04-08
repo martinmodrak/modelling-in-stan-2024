@@ -11,7 +11,7 @@
 
 
 
-<title>Lesson 3</title>
+<title>Lesson 4</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -266,77 +266,20 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Lesson 3</h1>
+<h1 class="title toc-ignore">Lesson 4</h1>
 
 </div>
 
 
-<pre class="r"><code>library(dplyr)
-library(magrittr)
-library(ggplot2)
-library(tidyr)
-theme_set(theme_minimal())</code></pre>
-<div id="first-lets-slow-down-a-bit" class="section level2">
-<h2>First, let’s slow down a bit</h2>
-<p>Try to complete <a
-href="lesson3-tasks.html#task-3-detecting-overdispersion-with-a-posterior-predictive-check">Task
-3 and 4</a> from Lesson 2 (and possibly others from the previous
-lessons)</p>
-<p>Pick projects!</p>
-</div>
-<div id="note-on-models" class="section level2">
-<h2>Note on models</h2>
 <ul>
-<li>Reuse methodology slides: <a
-href="https://docs.google.com/presentation/d/1jkcKfTOupedZRoJZ9qSuGVDBjlzZFt6vOyEyN0pwduY/edit?usp=sharing"
-class="uri">https://docs.google.com/presentation/d/1jkcKfTOupedZRoJZ9qSuGVDBjlzZFt6vOyEyN0pwduY/edit?usp=sharing</a></li>
+<li>Random effects
+<ul>
+<li>Population of effects</li>
+<li>Shrinkage</li>
+</ul></li>
+<li>Non-centered parametrization</li>
+<li><code>transformed parameters</code> block</li>
 </ul>
-</div>
-<div id="linear-regression" class="section level2">
-<h2>Linear regression</h2>
-<ul>
-<li>The most ubiquitous type of model — see e.g. <a
-href="https://lindeloev.github.io/tests-as-linear/"
-class="uri">https://lindeloev.github.io/tests-as-linear/</a></li>
-<li>Taylor series</li>
-<li>Intercept, coefficients</li>
-<li><a
-href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-dummy-coding/">Dummy
-coding</a>
-<ul>
-<li>There are other ways to code (e.g. <a
-href="https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faqwhat-is-effect-coding/">effect
-coding</a>)</li>
-<li><code>model.matrix</code> in <code>R</code> does the coding for
-you</li>
-</ul></li>
-<li>Linear predictors and matrix multiplication
-<ul>
-<li>Intercept in the matrix</li>
-</ul></li>
-<li><a href="https://en.wikipedia.org/wiki/Least_squares">Least
-squares</a> and its relatio to normal distribution
-<ul>
-<li>Maximum likelihood estimator is equivalent to least-squares.</li>
-</ul></li>
-<li><a
-href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized
-linear models</a> (GLM)
-<ul>
-<li>Link function, inverse link function</li>
-<li>Most common link functions:
-<ul>
-<li>log for positive outcomes (i.e. exponentiate the predictors),</li>
-<li>logit (i.e. apply inverse logit to the predictor) for outcomes in
-[0, 1] - most notably for probabilities in logistic regression.</li>
-</ul></li>
-</ul></li>
-<li>Posterior predictive checks as a method to determine which
-predictors to add</li>
-</ul>
-<p>Now, let’s do some tasks. Note that they match workflow (simple stuff
-first, …)</p>
-</div>
 
 
 

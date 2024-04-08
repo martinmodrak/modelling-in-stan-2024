@@ -8,3 +8,4 @@ Last updated: `r  Sys.time()`.
 - Lesson 1: [outline](lesson1.html), [tasks](lesson1-tasks.html)
 - Lesson 2: [outline](lesson2.html), [tasks](lesson2-tasks.html)
 - Lesson 3: [outline](lesson3.html), [tasks](lesson3-tasks.html)
+- Lesson 4: [outline](lesson4.html), [tasks](lesson4-tasks.html)

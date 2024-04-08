@@ -1,0 +1,32 @@
+---
+title: "Lesson 4 - Tasks"
+output: html_document
+---
+
+
+
+## Task 1: Fixed to random effects
+
+Start with the code for [Lesson 3 - Task 6 (dummy coding)](https://martinmodrak.github.io/modelling-in-stan-2024/lesson3-tasks.html#task-6-dummy-coding) and/or the [regression code from Stan User's guide](https://mc-stan.org/docs/stan-users-guide/regression.html#linear-regression).
+
+Convert the 3 categorical groups into a random intercept model, i.e.:
+
+1) Remove the categorical variable from the model matrix
+2) Introduce new `data` elements for the model to represent the number of categories and the category each observation belongs to
+  - Use `array[N] int ` as a type for the cateogry input
+  - You may want to add `<lower = ..., upper = ...>` bounds for the category input - what would that be?
+3) Introduce new `parameter` elements:
+  - A positive number for the random intercept standard deviation
+  - A vector of the effects for each category (contrast with dummy coding, where you would have one fewer effects)
+4) Add the categorical predictor to the result of the matrix multiplication for the linear predictor.
+  - Note that in Stan, you can index a `vector` by an array to obtain a `vector` the same length as the array
+5) Add a prior for the standard deviation and then put a `normal(0, ...)` prior on the category random intercepts
+
+How does the fit change from the fixed effect
+
+## Task 2: Non-centered parametrization
+
+Convert the above model to non-centered parametrization, i.e.:
+
+1) Put a `normal(0, 1)` prior on the random intercept vector
+2) Multiply the raw parameters by the standard deviation in `transformed parameters`
