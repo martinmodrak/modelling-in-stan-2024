@@ -1,0 +1,16 @@
+---
+title: "Lesson 6"
+output: html_document
+---
+
+
+## Ordinal models
+
+- Nice, thorough introduction: Bürkner & Vuorre 2019, https://doi.org/10.1177/2515245918823199
+- What are ordinal data
+- Cumulative model
+- Choice of link function
+- Continuation/stop models
+- Differences mainly theoretical
+
+
